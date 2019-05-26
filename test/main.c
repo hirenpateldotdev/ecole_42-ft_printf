@@ -61,16 +61,27 @@ void		test_o(void)
 void		test_u(void)
 {
 	char				*format;
-	short int			arg;
+	int			arg;
 	printf("U\n_____________________________________________\n");
-	format	= "|%hu|";
-	arg		= (short int)65535;
+	format	= "|%5.0u|";
+	arg		= 0;
+	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
+	printf("_____________________________________________\n");
+}
+
+void		test_x(void)
+{
+	char				*format;
+	unsigned long long int			arg;
+	printf("U\n_____________________________________________\n");
+	format	= "|%x|";
+	arg		= -1;
 	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
 	printf("_____________________________________________\n");
 }
 
 int			main(void)
 {
-	test_o();
+	test_u();
 	return (0);
 }

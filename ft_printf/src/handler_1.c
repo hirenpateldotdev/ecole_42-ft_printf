@@ -111,7 +111,7 @@ int					u_handler(t_pf *cache, va_list args)
 
 	nb = get_unsigned_int(cache, args);
 	cache->zero = cache->minus && cache->zero ? 0 : cache->zero;
-	str = !cache->precision && !nb ? ft_strset(&str, "") : ft_ullitoa(ULLI(nb));
+	str = !cache->precision && !nb ? ft_strdup("") : ft_ullitoa(ULLI(nb));
 	str = nb < 0 ? ft_strset(&str, "4294967295") : str;
 	len = !cache->precision && !nb ? 0 : ft_strlen(str);
 	ret = MAX(cache->precision, len);
