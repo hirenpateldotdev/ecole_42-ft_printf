@@ -24,12 +24,15 @@ int							o_handler(t_pf *cache, va_list args)
 	str_nb = nb == 0 ? ft_strdup("0") : str_nb;
 	if (cache->hashtag)
 		cache->precision = !nb ? MAX(cache->precision, 1) :
-		MAX((unsigned long)cache->precision, (ft_strlen(str_nb) + 1));;
+	MAX(cache->precision, (int)(ft_strlen(str_nb) + 1));
+	cache->zero = cache->precision >= 0 || cache->minus ? 0 : cache->zero;
+	if (cache->hashtag)
+		cache->precision = cache->precision >= 0 && cache->precision >
+	(int)ft_strlen(str_nb) + 1 ? cache->precision : ft_strlen(str_nb) + 1;
 	len = cache->precision && !nb ? 1 : ft_strlen(str_nb);
 	ret = MAX(cache->precision, len);
 	if (!cache->minus)
 		padding(cache, len, ' ', ret);
-	write_sign(cache);
 	padding(cache, len, '0', ret);
 	write(1, str_nb, len);
 	if (cache->minus)
