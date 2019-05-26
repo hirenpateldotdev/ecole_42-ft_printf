@@ -9,6 +9,7 @@ SOURCES := ft_printf.c
 SOURCES += parse.c
 SOURCES += libft_extra_1.c libft_extra_2.c
 SOURCES += handler_1.c handler_2.c
+SOURCES += handler_3.c
 SOURCES += helper.c
 SOURCES := $(SOURCES:%.c=src/%.c)
 OBJECTS := $(SOURCES:src/%.c=obj/%.o)

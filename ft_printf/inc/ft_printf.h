@@ -85,6 +85,7 @@ int						d_handler(t_pf *cache, va_list args);
 int						u_handler(t_pf *cache, va_list args);
 int						o_handler(t_pf *cache, va_list args);
 int						x_handler(t_pf *cache, va_list args);
+int						b_handler(t_pf *cache, va_list args);
 int						no_case_x_handler(t_pf *cache, char *prefix,
 						unsigned long long int nb, char *str_nb);
 int						f_handler(t_pf *cache, va_list args);

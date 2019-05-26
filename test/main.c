@@ -80,8 +80,20 @@ void		test_x(void)
 	printf("_____________________________________________\n");
 }
 
+void		test_b(void)
+{
+	char				*format;
+	unsigned long long int			arg;
+	printf("U\n_____________________________________________\n");
+	format	= "|%b|";
+	arg		= 101;
+	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
+	printf("_____________________________________________\n");
+}
+
 int			main(void)
 {
-	test_u();
+	test_b();
+	ft_printf("\n 42 = |%b|",42);
 	return (0);
 }

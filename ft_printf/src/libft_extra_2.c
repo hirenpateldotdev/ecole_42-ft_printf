@@ -47,7 +47,8 @@ int					asterisk_int(int *nb, va_list args)
 int					is_spe(char x)
 {
 	return (x == 'c' || x == 's' || x == 'p' || x == 'd' || x == 'i' ||
-	x == 'o' || x == 'u' || x == 'x' || x == 'X' || x == 'f' || x == '%');
+	x == 'o' || x == 'u' || x == 'x' || x == 'X' || x == 'f' || x == '%'
+	|| x == 'd');
 }
 
 char				*ft_strset(char **dest, char *src)

@@ -60,7 +60,7 @@ int					cache_init(t_pf *cache, const char *f, va_list args)
 	t = cache_length(cache, f);
 	f += t;
 	read += t;
-	t = cache_specifier(cache, f, "cspdiouxXf%\0");
+	t = cache_specifier(cache, f, "cspdiouxXfb%\0");
 	f += t;
 	read += t;
 	return (read);
@@ -68,7 +68,7 @@ int					cache_init(t_pf *cache, const char *f, va_list args)
 
 int					handler(t_pf *cache, va_list arg)
 {
-	int				(*handle[11])(t_pf *, va_list);
+	int				(*handle[12])(t_pf *, va_list);
 	int				func;
 	int				write;
 
@@ -82,8 +82,9 @@ int					handler(t_pf *cache, va_list arg)
 	handle[7] = x_handler;
 	handle[8] = x_handler;
 	handle[9] = f_handler;
-	handle[10] = mod_handler;
-	func = ft_strchrn("cspdiouxXf%", cache->specifier);
+	handle[10] = b_handler;
+	handle[11] = mod_handler;
+	func = ft_strchrn("cspdiouxXfb%", cache->specifier);
 	write = handle[func](cache, arg);
 	return (write);
 }
