@@ -48,14 +48,25 @@ void		test_o(void)
 	char				*format;
 	unsigned int		arg;
 	printf("O\n_____________________________________________\n");
-	format	= "|%08.3u|";
-	arg		= 8375;
+	format	= "|%o|";
+	arg		= 0;
+	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
+	printf("_____________________________________________\n");
+}
+
+void		test_u(void)
+{
+	char				*format;
+	short int			arg;
+	printf("U\n_____________________________________________\n");
+	format	= "|%hu|";
+	arg		= (short int)65535;
 	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
 	printf("_____________________________________________\n");
 }
 
 int			main(void)
 {
-	test_mod();
+	test_o();
 	return (0);
 }

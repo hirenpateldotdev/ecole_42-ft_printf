@@ -34,9 +34,9 @@ unsigned long long int		get_unsigned_int(t_pf *cache, va_list arg)
 	if (cache->length == L)
 		return (va_arg(arg, unsigned long int));
 	if (cache->length == HH)
-		return ((char)va_arg(arg, unsigned int));
+		return ((unsigned char)va_arg(arg, unsigned int));
 	if (cache->length == H)
-		return (short int)(va_arg(arg, unsigned int));
+		return ((unsigned short)va_arg(arg, unsigned int));
 	return ((int)va_arg(arg, unsigned int));
 }
 
