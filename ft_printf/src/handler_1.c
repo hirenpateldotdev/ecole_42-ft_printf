@@ -68,7 +68,7 @@ int					s_handler(t_pf *cache, va_list args)
 	str = str ? str : "(null)";
 	len = ft_strlen(str);
 	if (len && cache->precision >= 0)
-		len = cache->precision;
+		len = MIN(len, cache->precision);
 	if (cache->width && len < cache->width && !cache->minus)
 	{
 		if (cache->zero)
