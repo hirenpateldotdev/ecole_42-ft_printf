@@ -49,3 +49,9 @@ int					is_spe(char x)
 	return (x == 'c' || x == 's' || x == 'p' || x == 'd' || x == 'i' ||
 	x == 'o' || x == 'u' || x == 'x' || x == 'X' || x == 'f' || x == '%');
 }
+
+char				*ft_strset(char **dest, char *src)
+{
+	ft_strdel(dest);
+	return (ft_strdup(src));
+}

@@ -21,7 +21,7 @@ int							o_handler(t_pf *cache, va_list args)
 
 	nb = get_unsigned_int(cache, args);
 	str_nb = ft_ullitoa_base(ULLI(nb), 8, '0');
-	str_nb = nb == 0 ? ft_strdup("0") : str_nb;
+	str_nb = nb == 0 ? ft_strset(&str_nb, "0") : str_nb;
 	if (cache->hashtag)
 		cache->precision = !nb ? MAX(cache->precision, 1) :
 	MAX(cache->precision, (int)(ft_strlen(str_nb) + 1));
@@ -50,14 +50,13 @@ int							no_case_x_handler(t_pf *cache, char *prefix,
 	if (nb < 0)
 	{
 		if (prefix[1] == 'X')
-			str_nb = ft_strdup("FFFFFFD6");
+			str_nb = ft_strset(&str_nb, "FFFFFFD6");
 		if (prefix[1] == 'x')
-			str_nb = ft_strdup("ffffffd6");
+			str_nb = ft_strset(&str_nb, "ffffffd6");
 	}
-	if (nb == 0)
-		str_nb = ft_strdup("0");
+	str_nb = nb == 0 ? ft_strset(&str_nb, "0") : str_nb;
 	if (nb == 0 && cache->precision == 0)
-		str_nb = ft_strdup("");
+		str_nb = ft_strset(&str_nb, "");
 	len = cache->precision && !nb ? 1 : ft_strlen(str_nb);
 	ret = MAX(cache->precision, len) + (cache->hashtag && nb ? 2 : 0);
 	if (!cache->minus)
@@ -68,6 +67,7 @@ int							no_case_x_handler(t_pf *cache, char *prefix,
 	write(1, str_nb, len);
 	if (cache->minus)
 		padding(cache, len, ' ', ret);
+	free(str_nb);
 	return (cache->width > ret ? cache->width : ret);
 }
 
@@ -85,14 +85,12 @@ int							x_handler(t_pf *cache, va_list args)
 	{
 		str_nb = ft_ullitoa_base(nb, 16, 'a');
 		ret = no_case_x_handler(cache, "0x", nb, str_nb);
-		free(str_nb);
 		return (ret);
 	}
 	else if (cache->specifier == 'X')
 	{
 		str_nb = ft_ullitoa_base(nb, 16, 'A');
 		ret = no_case_x_handler(cache, "0X", nb, str_nb);
-		free(str_nb);
 		return (ret);
 	}
 	return (ret);
@@ -129,7 +127,7 @@ int							p_handler(t_pf *cache, va_list args)
 	nb = get_unsigned_int(cache, args);
 	str_nb = ft_ullitoa_base(nb, 16, 'a');
 	if (nb == 0)
-		str_nb = ft_strdup("0");
+		str_nb = ft_strset(&str_nb, "0");
 	len = cache->precision && !nb ? 1 : ft_strlen(str_nb);
 	ret = MAX(cache->precision, len) + 2;
 	if (!cache->minus)

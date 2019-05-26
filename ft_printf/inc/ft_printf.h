@@ -90,4 +90,5 @@ int						no_case_x_handler(t_pf *cache, char *prefix, int nb,
 int						f_handler(t_pf *cache, va_list args);
 int						p_handler(t_pf *cache, va_list args);
 int						is_spe(char x);
+char					*ft_strset(char **dest, char *src);
 #endif
