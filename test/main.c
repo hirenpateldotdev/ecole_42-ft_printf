@@ -52,8 +52,8 @@ void		test_o(void)
 	// arg		= 0;
 	// printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
 	// printf("_____________________________________________\n");
-	format	= "|%010.5o|";
-	arg		= 12217;
+	format	= "|%#o|";
+	arg		= 0;
 	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
 	printf("_____________________________________________\n");
 }

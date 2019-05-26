@@ -28,7 +28,7 @@ int					ft_printf(const char *format, ...)
 			format += cache_init(&cache, format, args);
 			ret += (cache.valid ? handler(&cache, args) : 0);
 			if (!cache.valid || ret == -1)
-				return (-1);
+				return (ret);
 			ft_bzero(&cache, sizeof(cache));
 		}
 		else
