@@ -117,7 +117,6 @@ int					u_handler(t_pf *cache, va_list args)
 	ret = MAX(cache->precision, len);
 	if (!cache->minus)
 		padding(cache, len, ' ', ret);
-	write_sign(cache);
 	padding(cache, len, '0', ret);
 	write(1, str, len);
 	if (cache->minus)

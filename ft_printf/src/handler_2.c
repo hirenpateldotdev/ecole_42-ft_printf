@@ -21,7 +21,7 @@ int							o_handler(t_pf *cache, va_list args)
 
 	nb = get_unsigned_int(cache, args);
 	str_nb = ft_ullitoa_base(ULLI(nb), 8, '0');
-	str_nb = nb == 0 ? ft_strset(&str_nb, "0") : str_nb;
+	str_nb = !nb && !cache->precision ? ft_strset(&str_nb, "") : str_nb;
 	if (cache->hashtag)
 		cache->precision = !nb ? MAX(cache->precision, 1) :
 	MAX(cache->precision, (int)(ft_strlen(str_nb) + 1));
@@ -29,7 +29,7 @@ int							o_handler(t_pf *cache, va_list args)
 	if (cache->hashtag)
 		cache->precision = cache->precision >= 0 && cache->precision >
 	(int)ft_strlen(str_nb) + 1 ? cache->precision : ft_strlen(str_nb) + 1;
-	len = cache->precision && !nb ? 1 : ft_strlen(str_nb);
+	len = cache->precision && !nb ? 0 : ft_strlen(str_nb);
 	ret = MAX(cache->precision, len);
 	if (!cache->minus)
 		padding(cache, len, ' ', ret);
@@ -47,13 +47,6 @@ int							no_case_x_handler(t_pf *cache, char *prefix,
 	int						len;
 	int						ret;
 
-	// if (nb >= 4294967295 && cache->length != LL)
-	// {
-	// 	if (prefix[1] == 'X')
-	// 		str_nb = ft_strset(&str_nb, "FFFFFFFF");
-	// 	if (prefix[1] == 'x')
-	// 		str_nb = ft_strset(&str_nb, "ffffffff");
-	// }
 	str_nb = nb == 0 ? ft_strset(&str_nb, "0") : str_nb;
 	if (nb == 0 && cache->precision == 0)
 		str_nb = ft_strset(&str_nb, "");

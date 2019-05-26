@@ -22,6 +22,10 @@ long long int				get_signed_int(t_pf *cache, va_list arg)
 		return ((char)va_arg(arg, int));
 	if (cache->length == H)
 		return (short int)(va_arg(arg, int));
+	if (cache->length == J)
+		return (va_arg(arg, intmax_t));
+	if (cache->length == Z)
+		return (va_arg(arg, size_t));
 	return ((int)va_arg(arg, int));
 }
 
@@ -37,7 +41,11 @@ unsigned long long int		get_unsigned_int(t_pf *cache, va_list arg)
 		return ((unsigned char)va_arg(arg, unsigned int));
 	if (cache->length == H)
 		return ((unsigned short)va_arg(arg, unsigned int));
-	return ((int)va_arg(arg, unsigned int));
+	if (cache->length == J)
+		return (va_arg(arg, uintmax_t));
+	if (cache->length == Z)
+		return (va_arg(arg, size_t));
+	return ((unsigned int)va_arg(arg, unsigned int));
 }
 
 long double					get_double_int(t_pf *cache, va_list arg)
