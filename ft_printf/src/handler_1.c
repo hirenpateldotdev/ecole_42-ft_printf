@@ -27,12 +27,7 @@ int					mod_handler(t_pf *cache, va_list args)
 	}
 	write(1, &c, 1);
 	if (cache->width && cache->minus)
-	{
-		if (cache->zero)
-			ft_putnchar('0', cache->width - 1);
-		else
 			ft_putnchar(' ', cache->width - 1);
-	}
 	return (cache->width ? cache->width : 1);
 }
 
