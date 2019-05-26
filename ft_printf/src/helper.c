@@ -77,6 +77,8 @@ void						padding(t_pf *cache, int len, char c, int ret)
 	}
 	else
 	{
+		if (cache->precision > -1 && cache->precision < len)
+			cache->precision = len;
 		if (!cache->zero && (cache->width > ret) && c == 32)
 			ft_putnchar(' ', cache->width - ret);
 		else if (cache->precision > -1 && (cache->width > cache->precision))
