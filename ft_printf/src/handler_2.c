@@ -42,18 +42,18 @@ int							o_handler(t_pf *cache, va_list args)
 }
 
 int							no_case_x_handler(t_pf *cache, char *prefix,
-							int nb, char *str_nb)
+							unsigned long long int nb, char *str_nb)
 {
 	int						len;
 	int						ret;
 
-	if (nb < 0)
-	{
-		if (prefix[1] == 'X')
-			str_nb = ft_strset(&str_nb, "FFFFFFD6");
-		if (prefix[1] == 'x')
-			str_nb = ft_strset(&str_nb, "ffffffd6");
-	}
+	// if (nb >= 4294967254)
+	// {
+	// 	if (prefix[1] == 'X')
+	// 		str_nb = ft_strset(&str_nb, "FFFFFFD6");
+	// 	if (prefix[1] == 'x')
+	// 		str_nb = ft_strset(&str_nb, "ffffffd6");
+	// }
 	str_nb = nb == 0 ? ft_strset(&str_nb, "0") : str_nb;
 	if (nb == 0 && cache->precision == 0)
 		str_nb = ft_strset(&str_nb, "");
@@ -81,6 +81,13 @@ int							x_handler(t_pf *cache, va_list args)
 	nb = get_unsigned_int(cache, args);
 	if (cache->minus && cache->zero)
 		cache->zero = 0;
+	// if (!nb)
+	// {
+	// 	if (cache->specifier == 'X')
+	// 		str_nb = ft_strset(&str_nb, "FFFFFFD6");
+	// 	if (cache->specifier == 'x')
+	// 		str_nb = ft_strset(&str_nb, "ffffffd6");
+	// }
 	if (cache->specifier == 'x')
 	{
 		str_nb = ft_ullitoa_base(nb, 16, 'a');
