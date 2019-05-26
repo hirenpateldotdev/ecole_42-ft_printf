@@ -52,7 +52,7 @@ long double					get_double_int(t_pf *cache, va_list arg)
 {
 	if (cache->length == UL)
 		return (va_arg(arg, long double));
-	return (va_arg(arg, double));
+	return ((double)va_arg(arg, double));
 }
 
 int							write_sign(t_pf *cache)
