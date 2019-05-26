@@ -48,11 +48,11 @@ void		test_o(void)
 	char				*format;
 	unsigned int		arg;
 	printf("O\n_____________________________________________\n");
-	format	= "|%o|";
-	arg		= 0;
-	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
-	printf("_____________________________________________\n");
-	format	= "|%.5o|";
+	// format	= "|%o|";
+	// arg		= 0;
+	// printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
+	// printf("_____________________________________________\n");
+	format	= "|%010.5o|";
 	arg		= 12217;
 	printf(format, arg);printf("\n");ft_printf(format, arg);printf("\n");
 	printf("_____________________________________________\n");

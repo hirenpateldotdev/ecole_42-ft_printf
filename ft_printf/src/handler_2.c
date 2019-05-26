@@ -22,8 +22,9 @@ int							o_handler(t_pf *cache, va_list args)
 	nb = get_unsigned_int(cache, args);
 	str_nb = ft_ullitoa_base(ULLI(nb), 8, '0');
 	str_nb = nb == 0 ? ft_strdup("0") : str_nb;
-	cache->precision = cache->hashtag && !nb ? MAX(cache->precision, 1) :
-	MAX((unsigned long)cache->precision, (ft_strlen(str_nb) + 1));
+	if (cache->hashtag)
+		cache->precision = !nb ? MAX(cache->precision, 1) :
+		MAX((unsigned long)cache->precision, (ft_strlen(str_nb) + 1));;
 	len = cache->precision && !nb ? 1 : ft_strlen(str_nb);
 	ret = MAX(cache->precision, len);
 	if (!cache->minus)
