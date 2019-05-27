@@ -99,19 +99,19 @@ char				*ft_ldtoa(long double f_nb, int precision)
 	long double		fraction;
 	int				i;
 
-	f_nb = (long double)ft_round(f_nb, precision);
-	result = ft_llitoa((long long)f_nb);
+	result = ft_llitoa((long)f_nb);
+	precision = precision < 0 ? 6 : precision;
 	if (precision != 0)
 	{
 		result = ft_strjoinf(result, ".");
-		fraction = f_nb - (long long)f_nb;
+		fraction = f_nb - (long)f_nb;
 		i = 0;
 		decimal = ft_strnew(precision);
 		while (i < precision)
 		{
 			fraction = fraction * 10;
-			decimal[i] = ((long long)fraction % 10) + '0';
-			fraction = fraction - (long long)fraction;
+			decimal[i] = ((long)fraction % 10) + '0';
+			fraction = fraction - (long)fraction;
 			i++;
 		}
 		result = ft_strjoinf(result, decimal);

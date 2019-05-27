@@ -96,7 +96,6 @@ int							f_handler(t_pf *cache, va_list args)
 	int						len;
 
 	f_nb = get_double_int(cache, args);
-	cache->precision = cache->precision < 0 ? 6 : cache->precision;
 	result = ft_ldtoa((long double)f_nb, cache->precision);
 	len = ft_strlen(result);
 	if (len <= cache->width)
@@ -120,7 +119,6 @@ int							p_handler(t_pf *cache, va_list args)
 
 	nb = get_unsigned_int(cache, args);
 	str_nb = ft_ullitoa_base(nb, 16, 'a');
-	str_nb = !nb && !cache->precision ? ft_strset(&str_nb, "0") : str_nb;
 	if (nb == 0)
 		str_nb = ft_strset(&str_nb, "0");
 	len = cache->precision && !nb ? 1 : ft_strlen(str_nb);

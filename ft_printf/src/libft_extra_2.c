@@ -23,13 +23,14 @@ char				*ft_strjoinf(char *str_1, char *str_2)
 
 long double			ft_round(long double d, int p)
 {
+	long double		rounded;
 	long double		m;
 
+	m = 1;
 	while (p--)
-		m /= 10;
-	if (d < 0)
-		return (d - m);
-	return (d + m);
+		m *= 10;
+	rounded = ((int)(d * m + .5) / m);
+	return (rounded);
 }
 
 int					asterisk_int(int *nb, va_list args)
