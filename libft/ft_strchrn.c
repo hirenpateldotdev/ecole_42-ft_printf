@@ -3,21 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchrn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hirenpat <marcin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hirenpat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/07 12:13:33 by hirenpat          #+#    #+#             */
-/*   Updated: 2019/05/11 17:50:39 by hirenpat         ###   ########.fr       */
+/*   Created: 2018/12/17 15:30:43 by hirenpat          #+#    #+#             */
+/*   Updated: 2018/12/17 15:30:46 by hirenpat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				ft_strchrn(char *str, int c)
+int		ft_strchrn(const char *s, int c)
 {
-	int			i;
+	int i;
 
 	i = 0;
-	while (str[i] != '\0' && str[i] != (char)c)
+	while (*s != '\0' && *s != (char)c)
+	{
+		s++;
 		i++;
-	return (i);
+	}
+	if (*s != (char)c)
+		return (-1);
+	else
+		return (i);
 }
